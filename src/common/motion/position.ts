@@ -773,10 +773,11 @@ export class Position extends vscode.Position {
    * @param allowEmpty : Use true if "" is valid
    */
   public isInLeadingWhitespace(allowEmpty: boolean = false): boolean {
+    const text = TextEditor.getText(new vscode.Range(this.getLineBegin(), this.getRight()));
     if (allowEmpty) {
-      return /^\s*$/.test(TextEditor.getText(new vscode.Range(this.getLineBegin(), this)));
+      return /^\s*$/.test(text);
     } else {
-      return /^\s+$/.test(TextEditor.getText(new vscode.Range(this.getLineBegin(), this)));
+      return /^\s+$/.test(text);
     }
   }
 

@@ -360,7 +360,7 @@ class CommandCtrlW extends BaseCommand {
 
   public async exec(position: Position, vimState: VimState): Promise<VimState> {
     let wordBegin;
-    if (position.isInLeadingWhitespace()) {
+    if (position.getLeft().isInLeadingWhitespace()) {
       wordBegin = position.getLineBegin();
     } else if (position.isLineBeginning()) {
       wordBegin = position.getPreviousLineBegin().getLineEnd();
